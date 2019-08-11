@@ -1,0 +1,59 @@
+<!--
+ - Created by sonal on 2019-08-10.
+ -->
+
+<template>
+
+    <div class={modalClass} aria-hidden="false" role="dialog">
+        <div class="slds-modal__container">
+
+            <!-- HEADER -->
+            <template if:true={title}>
+                <div class="slds-modal__header">
+
+                    <template if:false={hideClose}>
+                        <lightning-button-icon icon-name="utility:close"
+                                               alternative-text="Close"
+                                               variant="bare-inverse"
+                                               onclick={close}
+                                               class="slds-modal__close"
+                                               size="large">
+                        </lightning-button-icon>
+                    </template>
+
+                    <h2 class="slds-text-heading--medium">{title}</h2>
+                </div>
+            </template>
+
+            <template if:false={title}>
+                <div class="slds-modal__header">
+
+                    <template if:false={hideClose}>
+                        <lightning-button-icon icon-name="utility:close"
+                                               alternative-text="Close"
+                                               variant="bare-inverse"
+                                               onclick={close}
+                                               class="slds-modal__close"
+                                               size="large">
+                        </lightning-button-icon>
+                    </template>
+
+                    <slot name="title"></slot>
+                </div>
+            </template>
+
+            <!-- BODY -->
+            <div class="slds-modal__content slds-p-around_small">
+                <slot></slot>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="slds-modal__footer" style="text-align: right;">
+                <slot name="footer"></slot>
+            </div>
+
+        </div>
+    </div>
+    <div class={backdropClass}></div>
+
+</template>
