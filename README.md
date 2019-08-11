@@ -1,1 +1,1 @@
-# lwc-modal
+# Salesforce Modal Component in LWC
